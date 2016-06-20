@@ -76,6 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
         return dialog;
     }
 
+
     public Dialog showWaitDialog(String msg, boolean isCancancelabel,Object o){
         if(null == dialog && !dialog.isShowing()){
         }

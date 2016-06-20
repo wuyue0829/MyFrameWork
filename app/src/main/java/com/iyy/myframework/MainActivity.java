@@ -1,26 +1,33 @@
 package com.iyy.myframework;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.iyy.myframework.activity.BaseActivity;
+
+public class MainActivity extends BaseActivity {
 
 
     private TextView tv_test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    protected void initParams() {
         tv_test = (TextView) findViewById(R.id.tv_test);
 
         tv_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showWaitDialog("初始化中！",true,null);
             }
         });
     }

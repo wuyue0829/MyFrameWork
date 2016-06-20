@@ -51,15 +51,6 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
 
 
     /**
-     * 关闭dialog
-     */
-    public void dismissDialog(){
-        if(null != dialog && dialog.isShowing()){
-            dialog.dismiss();
-        }
-    }
-
-    /**
      * 弹出对话框
      * @param title
      * @param msg
@@ -70,17 +61,35 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
      * @return
      */
     public Dialog showAlertDialog(String title,String msg,String[] btns,boolean isCancancelabel,final boolean isDismissAfterClickBtns,Object obj){
-        if(null == dialog && !dialog.isShowing()){
+        if(null == dialog || !dialog.isShowing()){
             dialog = DialogMaker.showCommonAlertDialog(this,title,msg,btns,this,isCancancelabel,isDismissAfterClickBtns,obj);
         }
         return dialog;
     }
 
-
+    /**
+     * 等待对话框
+     *
+     * @author blue
+     */
     public Dialog showWaitDialog(String msg, boolean isCancancelabel,Object o){
-        if(null == dialog && !dialog.isShowing()){
+        if(null == dialog || ! dialog.isShowing()){
+            dialog = DialogMaker.showCommenWaitDialog(this,msg,this,isCancancelabel,o);
         }
         return  dialog;
+    }
+
+    /**
+     * 关闭对话框
+     *
+     * @author blue
+     */
+    public void dismissDialog()
+    {
+        if (null != dialog && dialog.isShowing())
+        {
+            dialog.dismiss();
+        }
     }
 
     @Override
@@ -92,7 +101,6 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
     public void onCancelDialog(Dialog dialog, Object tag) {
 
     }
-
 
     @Override
     protected void onDestroy() {

@@ -15,7 +15,15 @@
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
         //欢迎界面
-        <activity android:name=".activity.GuideActivity">
+        <activity android:name=".activity.GuideActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+        </activity>
+
+        //主界面
+        <activity android:name=".activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,11 +31,6 @@
             </intent-filter>
         </activity>
 
-        //主界面
-        <activity android:name=".activity.MainActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" >
-        </activity>
     </application>
 
 </manifest>

@@ -1,14 +1,13 @@
-package com.iyy.myframework;
+package com.iyy.myframework.activity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.iyy.myframework.activity.BaseActivity;
+import com.iyy.myframework.R;
 import com.iyy.myframework.view.ToastMaker;
 
 import org.xutils.view.annotation.ViewInject;
-import org.xutils.x;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
@@ -17,7 +16,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        x.view().inject(this);
     }
 
     @Override
@@ -28,6 +26,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void initParams() {
         tv_test.setOnClickListener(this);
+    }
+
+    @Override
+    public void setWindowsIsShow() {
+
     }
 
     @Override

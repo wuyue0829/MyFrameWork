@@ -1,20 +1,23 @@
 package com.iyy.myframework;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.iyy.myframework.activity.BaseActivity;
-import com.iyy.myframework.utils.LogUtils;
+import com.iyy.myframework.view.ToastMaker;
 
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener{
 
-
+    @ViewInject(R.id.tv_test)
+    private TextView tv_test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        x.view().inject(this);
     }
 
     @Override
@@ -24,28 +27,15 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initParams() {
-        RequestParams params = new RequestParams("www.baidu.com");
-        x.http().get(params, new Callback.CommonCallback<String>() {
+        tv_test.setOnClickListener(this);
+    }
 
-            @Override
-            public void onSuccess(String result) {
-                LogUtils.e("onSuccess");
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                LogUtils.e("onError");
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-                LogUtils.e("onCancelled");
-            }
-
-            @Override
-            public void onFinished() {
-                LogUtils.e("onFinished");
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_test:
+                ToastMaker.showLongToast("test");
+                break;
+        }
     }
 }

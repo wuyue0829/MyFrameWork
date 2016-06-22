@@ -33,6 +33,9 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
         x.view().inject(this);
     }
 
+    /**
+     * onRsume()
+     */
 
     @Override
     protected void onResume() {

@@ -34,12 +34,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void initParams() {
         tv_test.setOnClickListener(this);
+
+        //设置在3秒钟之后开始跳转
         new Handler(new Handler.Callback() {
             //处理收到的消息处理
             @Override
             public boolean handleMessage(Message msg) {
                 // TODO Auto-generated method stub
                 startActivity(new Intent(getApplicationContext(), GuideActivity.class));
+                finish();
                 return false;
             }
         }).sendEmptyMessageDelayed(0, 3000);

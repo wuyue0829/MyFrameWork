@@ -24,4 +24,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'org.xutils:xutils:3.3.36'
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.bigkoo:quicksidebar:1.0.1'
+    compile 'com.android.support:recyclerview-v7:23.2.0'
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
 }

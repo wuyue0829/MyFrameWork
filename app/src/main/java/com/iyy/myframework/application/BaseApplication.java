@@ -2,29 +2,22 @@ package com.iyy.myframework.application;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.iyy.myframework.exception.BaseExceptionHandler;
-import com.iyy.myframework.exception.LocalFileHandler;
+import android.content.SharedPreferences;
 
 /**
  * Created by wuyue on 2016/6/20.
  */
-public abstract class BaseApplication extends Application{
+public class BaseApplication extends Application{
 
     public static final String TAG = "Application";
-    public static Context application;
+
+    public SharedPreferences sharedPreferences;
+    public static Context applicationContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        application = getApplicationContext();
-
-        if(getDefaultUncaughtExceptionHandler() == null){
-            Thread.setDefaultUncaughtExceptionHandler(new LocalFileHandler(application));
-        }else{
-            Thread.setDefaultUncaughtExceptionHandler(getDefaultUncaughtExceptionHandler());
-        }
+        applicationContext = getApplicationContext();
+        sharedPreferences = getSharedPreferences("yy_framwork",MODE_PRIVATE);
     }
-
-    public abstract BaseExceptionHandler getDefaultUncaughtExceptionHandler();
 }

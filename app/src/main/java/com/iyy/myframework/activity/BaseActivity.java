@@ -1,12 +1,15 @@
 package com.iyy.myframework.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.iyy.myframework.utils.ActivityStack;
 import com.iyy.myframework.view.DialogMaker;
+
+import org.xutils.x;
 
 /**
  * Created by wuyue on 2016/6/17.
@@ -17,14 +20,22 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
 
     private boolean isCreate = false;
 
+    public Context mContext;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setWindowsIsShow();
         ActivityStack.getInstance().addActivity(this);//添加当前子类到栈中
         setContentView(getLayoutId());
         isCreate = true;
+        mContext = this;
+        x.view().inject(this);
     }
 
+    /**
+     * onRsume()
+     */
 
     @Override
     protected void onResume() {
@@ -66,6 +77,8 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
         }
         return dialog;
     }
+
+    public abstract void setWindowsIsShow();
 
     /**
      * 等待对话框

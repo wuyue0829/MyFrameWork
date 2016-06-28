@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.iyy.myframework.R;
+import com.iyy.myframework.activity.login.LoginActivity;
 import com.iyy.myframework.fragment.GuideOneFragment;
 import com.iyy.myframework.fragment.GuideThreeFragment;
 import com.iyy.myframework.fragment.GuideTwoFragment;
@@ -95,8 +96,8 @@ public class GuideActivity extends BaseActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mContext,MainActivity.class));
-                finish();
+           startActivity(new Intent(mContext,LoginActivity.class));
+           finish();
             }
         });
     }

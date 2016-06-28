@@ -7,9 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.iyy.myframework.utils.ActivityStack;
+import com.iyy.myframework.utils.SysConfig;
 import com.iyy.myframework.view.DialogMaker;
 
 import org.xutils.x;
+
+import cn.sharesdk.framework.ShareSDK;
 
 /**
  * Created by wuyue on 2016/6/17.
@@ -17,6 +20,8 @@ import org.xutils.x;
 public abstract class BaseActivity extends AppCompatActivity implements DialogMaker.DialogCallBack{
 
     protected Dialog dialog;
+
+    protected SysConfig sysConfig;
 
     private boolean isCreate = false;
 
@@ -30,7 +35,9 @@ public abstract class BaseActivity extends AppCompatActivity implements DialogMa
         setContentView(getLayoutId());
         isCreate = true;
         mContext = this;
+        sysConfig = SysConfig.getConfig(this);
         x.view().inject(this);
+        ShareSDK.initSDK(this);
     }
 
     /**
